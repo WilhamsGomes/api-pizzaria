@@ -13,17 +13,29 @@ class ProductRepository{
     }
 
     async create({name_product, price_product, descricao_product}){
-        const row = await db.query(`
+
+        await db.query(`
             INSERT INTO products(name_product, price_product, descricao_product) 
             VALUES(?, ?, ?)
         `, [name_product, price_product, descricao_product]);
-
         return [{status:"200", message:"Produto adicionado com sucesso!"}];
     }
 
-    update(){}
+    async update(id, {name_product, price_product, descricao_product}){
 
-    delete(){}
+        await db.query(`
+            UPDATE products
+            SET name_product = ?, price_product = ?, descricao_product = ?
+            WHERE id_product = ?
+        `, [name_product, price_product, descricao_product, id]);
+
+        return [{status:"200", message:"Produto editado com sucesso!"}];
+    }
+
+    async delete(id){
+        const deleteOp = await db.query("DELETE FROM products WHERE id_product = ?", [id]);
+        return deleteOp;
+    }
 
 }
 
