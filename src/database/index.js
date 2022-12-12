@@ -2,11 +2,11 @@
 const { createConnection } = require("mysql2")
 
 const connection = new createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "1234",
-    database: "pizzaria",
+    host: "0",
+    port: 0,
+    user: "0",
+    password: "0",
+    database: "0",
 });
 
 connection.connect( (error) => {

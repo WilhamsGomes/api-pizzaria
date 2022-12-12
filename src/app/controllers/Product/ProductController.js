@@ -1,5 +1,5 @@
 const ProductRepository = require("../../repositories/Product/ProductRepository");
-
+ 
 class ProductController {
 
     async index(request, response){
